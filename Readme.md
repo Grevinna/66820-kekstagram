@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Олеся Штыковская](https://up.htmlacademy.ru/javascript/8/user/66820).
-* Наставник: `Неизвестно`.
+* Наставник: `Евгений Лепёшкин`.
 
 ---
 

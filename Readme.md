@@ -2,6 +2,7 @@
 
 * Студент: [Олеся Штыковская](https://up.htmlacademy.ru/javascript/8/user/66820).
 * Наставник: `Евгений Лепёшкин`.
+(https://htmlacademy.ru/profile/id144641).
 
 ---
 

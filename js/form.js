@@ -17,6 +17,7 @@ var resizeValue = document.querySelector('.upload-resize-controls-value');
 
 var defaultZoom = 100;
 var step = 25;
+var lastClass = null;
 
 var changeZoom = function (direction) { // Изменение масштаба изображения на величину шага
   if (direction) { // к дефолтному значению прибавим величину шага
@@ -55,6 +56,11 @@ formCancel.addEventListener('click', function () {
 for (var i = 0; i < filters.length; i++) { // цикл для i
   filters[i].addEventListener('click', function (e) {
     var currentFilter = 'filter-' + document.querySelector('#' + e.currentTarget.htmlFor).value;
+    if (lastClass) { // проверяем lastClass, если его значение =null, то он сюда не пройдет, а если изменилось, после прохождения строки lastClass=currentFilter;, то предыдущее значение удаляется
+      imagePreview.classList.remove(lastClass);
+    }
+
+    lastClass=currentFilter; // если используется впервые, то null меняет на значение currentFilter, если повторно используется, то currentFilter меняется после удаления предыдущего при помощи ранее идущего if (lastClass)
 
     imagePreview.classList.add(currentFilter); // используем переменную, которая вычисляется по id и области нажатия '#' + e.currentTarget.htmlFor
   });

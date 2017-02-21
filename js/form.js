@@ -52,6 +52,14 @@ formCancel.addEventListener('click', function () {
   uploadFile.value = ''; // обнулили значение
 });
 
+window.addEventListener('keydown', function (event) {
+  if (event.keyCode === 27) {
+    uploadOverlay.classList.add('invisible'); // добавили класс
+    uploadForm.classList.remove('invisible'); // убрали класс
+    uploadFile.value = ''; // обнулили значение
+  }
+});
+
 // Применение фильтра к изображению
 for (var i = 0; i < filters.length; i++) { // цикл для i
   filters[i].addEventListener('click', function (e) {
@@ -60,9 +68,24 @@ for (var i = 0; i < filters.length; i++) { // цикл для i
       imagePreview.classList.remove(lastClass);
     }
 
-    lastClass=currentFilter; // если используется впервые, то null меняет на значение currentFilter, если повторно используется, то currentFilter меняется после удаления предыдущего при помощи ранее идущего if (lastClass)
+    lastClass = currentFilter; // если используется впервые, то null меняет на значение currentFilter, если повторно используется, то currentFilter меняется после удаления предыдущего при помощи ранее идущего if (lastClass)
 
     imagePreview.classList.add(currentFilter); // используем переменную, которая вычисляется по id и области нажатия '#' + e.currentTarget.htmlFor
+  });
+}
+
+for (var i = 0; i < filters.length; i++) { // цикл для i
+  filters[i].addEventListener('keydown', function (event) {
+    if (event.keyCode === 9) {
+      var currentFilter = 'filter-' + document.querySelector('#' + e.currentTarget.htmlFor).value;
+      if (lastClass) { // проверяем lastClass, если его значение =null, то он сюда не пройдет, а если изменилось, после прохождения строки lastClass=currentFilter;, то предыдущее значение удаляется
+        imagePreview.classList.remove(lastClass);
+      }
+
+      lastClass = currentFilter; // если используется впервые, то null меняет на значение currentFilter, если повторно используется, то currentFilter меняется после удаления предыдущего при помощи ранее идущего if (lastClass)
+
+      imagePreview.classList.add(currentFilter); // используем переменную, которая вычисляется по id и области нажатия '#' + e.currentTarget.htmlFor
+    }
   });
 }
 
